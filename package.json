@@ -1,0 +1,50 @@
+{
+  "name": "tinyga-image-optimizer",
+  "version": "1.0.0",
+  "description": "Tinyga Image Optimizer Client",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "keywords": [
+    "tinyga",
+    "image optimization"
+  ],
+  "author": {
+    "name": "EPK Technologies s.r.o.",
+    "url": "http://www.epk-technologies.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@types/image-size": "^0.7.0",
+    "@types/md5": "^2.1.33",
+    "@types/node": "^12.0.4",
+    "@types/request": "^2.48.1",
+    "@types/valid-url": "^1.0.2",
+    "image-size": "^0.7.4",
+    "image-type": "^4.1.0",
+    "md5": "^2.2.1",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "prettier": "^1.17.1",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.1"
+  },
+  "files": [
+    "lib/**/*"
+  ]
+}
