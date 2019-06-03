@@ -2,10 +2,10 @@ import { AbstractOptimizationRequest } from './AbstractOptimizationRequest';
 
 export class SimpleOptimizationRequest extends AbstractOptimizationRequest {
   protected imageFileName: string = '';
-  protected imageContent: string = '';
+  protected imageContent: Buffer = new Buffer('', 'binary');
 
   constructor(
-    imageContent?: string,
+    imageContent?: Buffer,
     fileName?: string,
     quality?: number,
     keepMetadata?: string[],
@@ -27,15 +27,15 @@ export class SimpleOptimizationRequest extends AbstractOptimizationRequest {
     return this.imageFileName;
   }
 
-  public setImageFileName(imageFileName: string) {
+  public setImageFileName(imageFileName: string): void {
     this.imageFileName = imageFileName;
   }
 
-  public getImageContent(): string {
+  public getImageContent(): Buffer {
     return this.imageContent;
   }
 
-  public setImageContent(imageContent: string) {
+  public setImageContent(imageContent: Buffer): void {
     this.imageContent = imageContent;
   }
 }

@@ -40,12 +40,12 @@ export class ImageTypesEnum {
   }
 
   public static isAvailableType(type: string): boolean {
-    return type in this.getAvailableTypes();
+    return this.getAvailableTypes().includes(type);
   }
 
   public static checkValue(value: string) {
     if (!this.isAvailableType(value)) {
-      throw new Error('${value} is not a valid type');
+      throw new Error(`${value} is not a valid type`);
     }
   }
 }

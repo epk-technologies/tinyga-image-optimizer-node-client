@@ -58,7 +58,7 @@ export class ImageParameters {
   }
 
   public setMD5Checksum(md5Checksum: string): void {
-    if (!md5Checksum.match('~^[0-9a-f]{32}~')) {
+    if (!md5Checksum.match(/^[0-9a-f]{32}/)) {
       throw new Error('Invalid MD5 checksum format');
     }
     this.md5Checksum = md5Checksum;

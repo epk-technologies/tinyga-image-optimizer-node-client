@@ -1,6 +1,7 @@
 import typeOf from 'image-type';
 import validUrl from 'valid-url';
-import {IOptimizationRequest, OptimizationRequest} from './IOptimizationRequest';
+import { ImageOptimizerClientException } from '../ImageOptimizerClientException';
+import { IOptimizationRequest, OptimizationRequest } from './IOptimizationRequest';
 
 export class OptimizationRequestValidator {
   public static checkQuality(quality: number): void {
@@ -49,8 +50,8 @@ export class OptimizationRequestValidator {
     }
   }
 
-  public static checkImageContent(imageContent: string): void {
-    if (imageContent === '') {
+  public static checkImageContent(imageContent: Buffer): void {
+    if (!imageContent.length) {
       throw new ImageOptimizerClientException(
         'Missing image content',
         ImageOptimizerClientException.CODE_INVALID_FILE_NAME,
@@ -62,8 +63,7 @@ export class OptimizationRequestValidator {
       OptimizationRequest.IMAGE_PNG,
     ];
 
-    const buffer = Buffer.from(imageContent);
-    const imageType = typeOf(buffer);
+    const imageType = typeOf(imageContent);
     if (!imageType) {
       throw new ImageOptimizerClientException(
         'Invalid image content',
@@ -106,7 +106,7 @@ export class OptimizationRequestValidator {
       OptimizationRequest.TEST_MODE_DELIVERY_ERROR,
     ];
 
-    if (supported.includes(mode)) {
+    if (!supported.includes(mode)) {
       throw new ImageOptimizerClientException(
         `Test mode value '${mode}' is not supported.`,
         ImageOptimizerClientException.CODE_INVALID_METADATA,

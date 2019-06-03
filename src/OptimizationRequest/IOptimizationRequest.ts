@@ -2,7 +2,7 @@ export interface IOptimizationRequest {
   getQuality(): number;
   getKeepMetadata(): any[];
   getImageFileName(): string;
-  getImageContent(): string;
+  getImageContent(): Buffer;
   getPostResultToUrl(): string | undefined;
   isAsyncResult(): boolean;
   isTestMode(): boolean;

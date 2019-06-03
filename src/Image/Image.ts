@@ -3,9 +3,9 @@ import { ImageParametersResolver } from './ImageParametersResolver';
 
 export class Image {
   protected imageParameters?: ImageParameters;
-  protected content?: string;
+  protected content?: Buffer;
 
-  constructor(content?: string) {
+  constructor(content?: Buffer) {
     if (content) {
       this.setContent(content);
     }
@@ -15,16 +15,12 @@ export class Image {
     return this.imageParameters;
   }
 
-  public getContent(): string | undefined {
+  public getContent(): Buffer | undefined {
     return this.content;
   }
 
-  public setContent(content: string): void {
+  public setContent(content: Buffer): void {
     this.imageParameters = ImageParametersResolver.resolveParametersFromContent(content);
     this.content = content;
-  }
-
-  public __toString(): string | undefined {
-    return this.getContent();
   }
 }

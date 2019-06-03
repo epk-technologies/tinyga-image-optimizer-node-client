@@ -1,4 +1,4 @@
-class ImageOptimizerClientException extends Error {
+export class ImageOptimizerClientException extends Error {
   public static readonly CODE_INVALID_API_KEY = 10;
   public static readonly CODE_INVALID_ENDPOINT = 20;
   public static readonly CODE_INVALID_QUALITY = 30;

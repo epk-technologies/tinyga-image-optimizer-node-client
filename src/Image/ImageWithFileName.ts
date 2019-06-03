@@ -3,7 +3,7 @@ import { Image } from './Image';
 export class ImageWithFileName extends Image {
   protected fileName?: string;
 
-  constructor(sourcePath?: string, content?: string) {
+  constructor(sourcePath?: string, content?: Buffer) {
     super(content);
 
     if (sourcePath) {

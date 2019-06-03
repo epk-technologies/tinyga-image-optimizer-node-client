@@ -67,5 +67,5 @@ export abstract class AbstractOptimizationRequest implements IOptimizationReques
   }
 
   public abstract getImageFileName(): string;
-  public abstract getImageContent(): string;
+  public abstract getImageContent(): Buffer;
 }

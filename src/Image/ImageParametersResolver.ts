@@ -4,10 +4,9 @@ import md5 from 'md5';
 import { ImageParameters } from './ImageParameters';
 
 export class ImageParametersResolver {
-  public static resolveParametersFromContent(imageContent: string): ImageParameters {
-    const buffer = Buffer.from(imageContent);
-    const imageSize = sizeOf(buffer);
-    const imageType = typeOf(buffer);
+  public static resolveParametersFromContent(imageContent: Buffer): ImageParameters {
+    const imageSize = sizeOf(imageContent);
+    const imageType = typeOf(imageContent);
 
     if (!imageSize || !imageType) {
       throw new Error('Content is not valid image');
